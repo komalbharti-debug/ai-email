@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Email Reply Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Email Reply Generator</h1> 
+        </header>
+
+        <!-- Generator Form -->
+        <div id="generate-tab" class="tab-content active card">
+            <div class="form-group">
+                <div>
+                    <label for="to">To</label>
+                    <input type="text" id="to" name="to" placeholder="Recipient's Name" />
+                </div>
+            
+                <div>
+                    <label for="from">From</label>
+                    <input type="text" id="from" name="from" placeholder="Your Name (Sender's)" />
+                </div>
+            
+                <div>
+                    <label for="original-email">Original Email</label>
+                    <textarea id="original-email" name="original-email" placeholder="Paste the email you want to reply to..."></textarea>
+                </div>
+
+                <p id="moodDisplay" style="font-weight: bold; margin-top: 10px;"></p>
+
+                <div>
+                    <label for="reply">Reply Inputs</label>
+                    <textarea id="reply" name="reply" placeholder="What would you like to include in your reply? (Optional keywords, ideas...)"></textarea>
+                </div>
+            </div>
+            
+            <div class="options-row">
+                <div class="form-group">
+                    <label for="tone">Tone</label>
+                    <select id="tone">
+                        <option value="apologetic">Apologetic</option>
+                        <option value="assertive">Assertive</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="formal">Formal</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="persuasive">Persuasive</option>
+                        <option value="polite">Polite</option>
+                        <option value="professional" selected>Professional</option>
+                        <option value="sympathetic">Sympathetic</option>                        
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="length">Length</label>
+                    <select id="length">
+                        <option value="short">Short</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="long">Detailed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button id="mood-btn" class="btn btn-outline">
+                    Check Mood
+                </button>
+                <button id="clear-btn" class="btn btn-outline">
+                    Clear
+                </button>
+                <button id="generate-btn" class="btn btn-primary">
+                    Generate Reply
+                </button>
+            </div>
+
+            <div id="result-card" class="result-card">
+                <div class="result-header">
+                    <div class="result-title">Generated Reply</div>
+                    <button id="copy-btn" class="copy-btn">
+                        <span id="copy-text">Copy</span>
+                    </button>
+                </div>
+                <div id="result-content" class="result-content">
+                    <div id="loading-indicator" class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="regenerate-btn" class="regenerate-btn">
+                        Regenerate
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="card about-section">
+            <div class="section-header">
+                <span class="icon">ℹ</span>
+                <h2>About This Tool</h2>
+            </div>
+            <p>
+                The Smart Email Reply Generator uses advanced AI to help you craft professional, 
+                contextually appropriate email responses in seconds. Simply input the original email, 
+                add any key points you want to include, select your preferred tone and length, and let 
+                our AI do the rest.
+            </p>
+        </div>
+
+        <!-- Description Section -->
+        <div class="card description-section">
+            <div class="section-header">
+                <span class="icon">📝</span>
+                <h2>How It Works</h2>
+            </div>
+            <div class="description-content">
+                <div class="description-item">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <h3>Input Your Email</h3>
+                        <p>Paste the original email you received and want to reply to</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <h3>Add Key Points</h3>
+                        <p>Specify any important points you want to include in your response</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <h3>Choose Settings</h3>
+                        <p>Select your preferred tone and response length</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="step-number">4</span>
+                    <div class="step-content">
+                        <h3>Generate & Edit</h3>
+                        <p>Get your AI-generated reply and customize it as needed</p>
+                    </div>
+                    </div>
+                    <div class="description-item">
+                        <span class="step-number">5</span>
+                        <div class="step-content">
+                            <h3>Check the Mood</h3>
+                            <p>Analyze the tone of the original email to craft an appropriate response.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section card">
+            <div class="section-header">
+                <span class="icon">⭐</span>
+                <h2>Key Features</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Fast Generation</h3>
+                    <p>Get complete email replies in seconds</p>
+                </div>
+                <div class="feature-card">
+        <span class="feature-icon">🧠</span>
+        <h3>Mood Analysis</h3>
+        <p>Analyze the mood analysis of the email</p>
+    </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Multiple Tones</h3>
+                    <p>Choose from 9 different communication styles</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📏</span>
+                    <h3>Adjustable Length</h3>
+                    <p>Control how detailed your response will be</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👤</span>
+                    <h3>Personalization</h3>
+                    <p>Include sender and recipient names</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="card tips-section">
+            <div class="section-header">
+                <span class="icon">💡</span>
+                <h2>Tips for Getting the Best Results</h2>
+            </div>
+            <div class="tips-list">
+                <div class="tip-item">
+                    <span class="check-icon">✓</span>
+                    <div class="tip-content">
+                        <span class="tip-title">Include the complete original email</span>
+                        <span class="tip-description">for better context and more accurate replies</span>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="check-icon">✓</span>
+                    <div class="tip-content">
+                        <span class="tip-title">Specify names</span>
+                        <span class="tip-description">in the From/To fields to personalize your message</span>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="check-icon">✓</span>
+                    <div class="tip-content">
+                        <span class="tip-title">Use the Key Points field</span>
+                        <span class="tip-description">to guide the AI on specific topics you want to address</span>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="check-icon">✓</span>
+                    <div class="tip-content">
+                        <span class="tip-title">Choose the appropriate tone</span>
+                        <span class="tip-description">based on your relationship with the recipient</span>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="check-icon">✓</span>
+                    <div class="tip-content">
+                        <span class="tip-title">Review and edit</span>
+                        <span class="tip-description">the generated reply before sending to add your personal touch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
